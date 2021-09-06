@@ -1,6 +1,8 @@
+//Global Vars
 int red = 0;
 int blue = 0;
-int dC = 100;
+int dC = 100; // at 100ms this looks eerily like emergency lights
+
 void setup() {
   // put your setup code here, to run once:
   pinMode(10, OUTPUT);
