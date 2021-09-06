@@ -3,6 +3,7 @@ int blue = 0;
 void setup() {
   // put your setup code here, to run once:
   pinMode(10, OUTPUT);
+  pinMode(11, OUTPUT);
 }
 void rt() {
   digitalWrite(11, HIGH);
