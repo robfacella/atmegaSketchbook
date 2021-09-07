@@ -110,6 +110,8 @@
 #define E Q/2   //eighth 1/8
 #define S Q/4 // sixteenth 1/16
 #define W 4*Q // whole 4/4
+#define tE 3*Q/2   //eighth 3/8
+
 
 int buzzPin = 8;
 
