@@ -3,22 +3,22 @@
 // NB: ALL NOTES DEFINED WITH STANDARD ENGLISH NAMES, EXCEPT FROM "A"
 //THAT IS CALLED WITH THE ITALIAN NAME "LA" BECAUSE A0,A1...ARE THE ANALOG PINS ON ARDUINO.
 // (Ab IS CALLED Ab AND NOT LAb)
-#define  C0 16.35
-#define Db0 17.32
-#define D0  18.35
-#define Eb0 19.45
-#define E0  20.60
-#define F0  21.83
-#define Gb0 23.12
-#define G0  24.50
-#define Ab0 25.96
-#define LA0 27.50
-#define Bb0 29.14
-#define B0  30.87
-#define C1  32.70
-#define Db1 34.65
-#define D1  36.71
-#define Eb1 38.89
+#define  C0 16//16.35
+#define Db0 17//17.32
+#define D0  18//18.35
+#define Eb0 19//19.45
+#define E0  21//20.60
+#define F0  22//21.83
+#define Gb0 23//23.12
+#define G0  25//24.50
+#define Ab0 26//25.96
+#define LA0 28//27.50
+#define Bb0 29//29.14
+#define B0  31//30.87
+#define C1  33//32.70
+#define Db1 35//34.65
+#define D1  37//36.71
+#define Eb1 39//38.89
 #define E1  41.20
 #define F1  43.65
 #define Gb1 46.25
@@ -105,8 +105,8 @@
 #define Eb8 4978.03
 // DURATION OF THE NOTES
 #define BPM 120    //  you can change this value changing all the others
+#define Q (60000)/BPM //quarter 1/4
 #define H 2*Q //half 2/4
-#define Q 60000/BPM //quarter 1/4
 #define E Q/2   //eighth 1/8
 #define S Q/4 // sixteenth 1/16
 #define W 4*Q // whole 4/4
@@ -133,7 +133,7 @@ int durations[] = {
   E, E, E, Q, Q, Q, 
   Q, H, E, E, E, E
 };
-int songLength = sizeof(melody);
+int songLength = sizeof(melody) / sizeof(melody[0]) / 2;
 void setup() {
 //pinMode(buzzPin, OUTPUT);
 // pinMode(8, OUTPUT);
@@ -144,10 +144,10 @@ void loop() {
   for (int thisNote = 0; thisNote < songLength; thisNote++){
     // determine the duration of the notes that the computer understands
     // divide 1000 by the value, so the first note lasts for 1000/8 milliseconds
-    int duration = 1000/ durations[thisNote];
-    tone(8, melody[thisNote], duration);
+    int duration = durations[thisNote];//1000/ durations[thisNote];
+    tone(8, melody[thisNote], duration *0.9);
     // pause between notes
-    int pause = duration * 1.3;
+    int pause = duration;
     delay(pause);
     // stop the tone
     noTone(8);
