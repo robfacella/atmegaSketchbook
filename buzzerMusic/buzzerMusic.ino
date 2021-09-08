@@ -106,12 +106,11 @@
 // DURATION OF THE NOTES
 #define BPM 120    //  you can change this value changing all the others
 #define Q (60000)/BPM //quarter 1/4
-#define H 2*Q //half 2/4
-#define E Q/2   //eighth 1/8
-#define S Q/4 // sixteenth 1/16
-#define W 4*Q // whole 4/4
-#define tE 3*Q/2   //eighth 3/8
-
+#define H 2*Q     //half 2/4
+#define E Q/2     //eighth 1/8
+#define S Q/4     // sixteenth 1/16
+#define W 4*Q     // whole 4/4
+#define tE 3*Q/2  //three eighth 3/8
 
 int buzzPin = 8;
 
@@ -135,6 +134,7 @@ int durations[] = {
   E, E, E, Q, Q, Q, 
   Q, H, E, E, E, E
 };
+// sizeOf in bytes divided by the sizeOf an element of the array (total bytes divided by bytes of a single integer object; why am i dividing by 2 afterwards??)
 int songLength = sizeof(melody) / sizeof(melody[0]) / 2;
 void setup() {
 //pinMode(buzzPin, OUTPUT);
