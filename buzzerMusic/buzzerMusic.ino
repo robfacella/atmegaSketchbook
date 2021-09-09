@@ -251,6 +251,32 @@ void lightToggle(int pin){
     ledStat[pin] = 0;
   }
 }
+int chooseLight(int hertz){
+  //Choose an LED based on the note
+  //Not ideal but
+  if ((hertz % 8) == 0){
+    return 8;
+  }
+  if ((hertz % 7) == 0){
+    return 7;
+  }
+  if ((hertz % 6) == 0){
+    return 6;
+  }
+  if ((hertz % 5) == 0){
+    return 5;
+  }
+  if ((hertz % 4) == 0){
+    return 4;
+  }
+  if ((hertz % 3) == 0){
+    return 3;
+  }
+  if ((hertz % 2) == 0){
+    return 2;
+  }
+  return 1;
+}
 void setup() {
 //pinMode(buzzPin, OUTPUT);
   for (int i = 0; i < ledLength; i++){
@@ -276,7 +302,10 @@ void loop() {
     tone(8, melody[thisNote], duration *0.9);
     // pause between notes
     int pause = duration;
+    int light = chooseLight(melody[thisNote]);
+    lightToggle(light);
     delay(pause);
+    lightToggle(light);
     // stop the tone
     noTone(8);
   }
