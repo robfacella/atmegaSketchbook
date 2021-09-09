@@ -111,8 +111,16 @@
 #define S Q/4     // sixteenth 1/16
 #define W 4*Q     // whole 4/4
 #define tE 3*Q/2  //three eighth 3/8
-
+//pins grd through 5
 int buzzPin = 8;
+int led4 = 4;
+int led5 = 5;
+int led2 = 6;
+int led11 = 13;
+int led10 = 10;
+int led8 = 12;
+int led7 = 11;
+int led1 = 7;
 
 // Two things need to be created: the array for the notes of the melody (in order)
 // and the duration of each (think of it like sheet music in two parts)
@@ -222,12 +230,31 @@ int durations[] = {
 62, 62, 250, 375, 125, 250, 250, 125, 125, 125, 125, 125, 250, 
 375, 125, 250, 250, 125, 125, 125, 125, 125, 125, 125, 250, 375
 };
+ledArr[] = {
+  led1, led2, led4, led5,
+  led7, led8, led10, led11
+};
 // sizeOf in bytes divided by the sizeOf an element of the array (total bytes divided by bytes of a single integer object; why am i dividing by 2 afterwards??)
 int songLength = sizeof(melody) / sizeof(melody[0]) / 2;
+int ledLength = sizeof(ledArr) / sizeof(legArr[0]) / 2;
 void setup() {
 //pinMode(buzzPin, OUTPUT);
-// pinMode(8, OUTPUT);
-//digitalWrite(8,LOW);
+ pinMode(led1, OUTPUT);
+ digitalWrite(led1,LOW);
+ pinMode(led2, OUTPUT);
+ digitalWrite(led2,LOW);
+ pinMode(led4, OUTPUT);
+ digitalWrite(led4,LOW);
+ pinMode(led5, OUTPUT);
+ digitalWrite(led5,LOW);
+ pinMode(led7, OUTPUT);
+ digitalWrite(led7,LOW);
+ pinMode(led8, OUTPUT);
+ digitalWrite(led8,LOW);
+ pinMode(led10, OUTPUT);
+ digitalWrite(led10,LOW);
+ pinMode(led11, OUTPUT);
+ digitalWrite(led11,LOW);
 }
 void loop() {
   // The for loop stops when it is equal to the size of the melody array
