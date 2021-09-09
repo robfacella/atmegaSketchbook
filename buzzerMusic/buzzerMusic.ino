@@ -241,15 +241,32 @@ int ledStat[] = {
 // sizeOf in bytes divided by the sizeOf an element of the array (total bytes divided by bytes of a single integer object; why am i dividing by 2 afterwards??)
 int songLength = sizeof(melody) / sizeof(melody[0]);
 int ledLength = sizeof(ledArr) / sizeof(ledArr[0]);
+void lightToggle(int pin){
+  if (ledStat[pin] == 0){
+    digitalWrite(ledArr[pin], HIGH);
+    ledStat[pin] = 1;
+  }
+  else if (ledStat[pin] == 1){
+    digitalWrite(ledArr[pin], LOW);
+    ledStat[pin] = 0;
+  }
+}
 void setup() {
 //pinMode(buzzPin, OUTPUT);
   for (int i = 0; i < ledLength; i++){
     pinMode(ledArr[i], OUTPUT);
-    digitalWrite(ledArr[i], HIGH);
+    delay(3);
+    
+    lightToggle(i);
     delay(500);
-    digitalWrite(ledArr[i], LOW);
+  }
+  for (int j = 0; j < ledLength; j++){
+    lightToggle(j);
+    delay(500);
+    
   }
 }
+
 void loop() {
   // The for loop stops when it is equal to the size of the melody array
   for (int thisNote = 0; thisNote < songLength; thisNote++){
