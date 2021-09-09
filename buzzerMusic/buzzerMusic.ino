@@ -230,31 +230,25 @@ int durations[] = {
 62, 62, 250, 375, 125, 250, 250, 125, 125, 125, 125, 125, 250, 
 375, 125, 250, 250, 125, 125, 125, 125, 125, 125, 125, 250, 375
 };
-ledArr[] = {
+int ledArr[] = {
   led1, led2, led4, led5,
   led7, led8, led10, led11
 };
+int ledStat[] = {
+  0, 0, 0, 0,
+  0, 0, 0, 0
+};
 // sizeOf in bytes divided by the sizeOf an element of the array (total bytes divided by bytes of a single integer object; why am i dividing by 2 afterwards??)
-int songLength = sizeof(melody) / sizeof(melody[0]) / 2;
-int ledLength = sizeof(ledArr) / sizeof(legArr[0]) / 2;
+int songLength = sizeof(melody) / sizeof(melody[0]);
+int ledLength = sizeof(ledArr) / sizeof(ledArr[0]);
 void setup() {
 //pinMode(buzzPin, OUTPUT);
- pinMode(led1, OUTPUT);
- digitalWrite(led1,LOW);
- pinMode(led2, OUTPUT);
- digitalWrite(led2,LOW);
- pinMode(led4, OUTPUT);
- digitalWrite(led4,LOW);
- pinMode(led5, OUTPUT);
- digitalWrite(led5,LOW);
- pinMode(led7, OUTPUT);
- digitalWrite(led7,LOW);
- pinMode(led8, OUTPUT);
- digitalWrite(led8,LOW);
- pinMode(led10, OUTPUT);
- digitalWrite(led10,LOW);
- pinMode(led11, OUTPUT);
- digitalWrite(led11,LOW);
+  for (int i = 0; i < ledLength; i++){
+    pinMode(ledArr[i], OUTPUT);
+    digitalWrite(ledArr[i], HIGH);
+    delay(500);
+    digitalWrite(ledArr[i], LOW);
+  }
 }
 void loop() {
   // The for loop stops when it is equal to the size of the melody array
